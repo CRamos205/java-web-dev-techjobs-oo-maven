@@ -25,8 +25,11 @@ public class Job {
     }
 
     @Override
-    public boolean equals(Object obj) {
-        return super.equals(obj);
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Job job = (Job) o;
+        return id == job.id;
     }
 
     @Override
@@ -52,6 +55,10 @@ public class Job {
 
     public CoreCompetency getCoreCompetency() {
         return coreCompetency;
+    }
+
+    public int getId() {
+        return id;
     }
     // TODO: add two constructors - one to initialize a unique ID and a second to initialize the other five fields. The second constructor should also call the first in order to initialize the 'id' field
 
