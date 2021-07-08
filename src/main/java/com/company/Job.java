@@ -61,6 +61,32 @@ public class Job {
     public int getId() {
         return id;
     }
+
+    @Override
+    public String toString() {
+        if (this.name == ""){
+            System.out.println("Data Not Available");
+        }
+        if (this.employer.equals("")) {
+            System.out.println("Data Not Available");
+        }
+        if (this.location.equals("")) {
+            System.out.println("Data Not Available");
+        }
+        if (this.getPositionType().getValue().equals("")) {
+            System.out.println("Data Not Available");
+        }
+        if (this.coreCompetency.equals("")) {
+            System.out.println("Data Not Available");
+        }
+        return "\n"+
+                "ID: " + id + "\n"+
+                "Name: " + name + "\n" +
+                "Employer: " + employer + "\n" +
+                "Location: " + location + "\n" +
+                "Position Type: " + this.getPositionType().getValue() + "\n" +
+                "Core Competency: " + coreCompetency + "\n";
+    }
     // TODO: add two constructors - one to initialize a unique ID and a second to initialize the other five fields. The second constructor should also call the first in order to initialize the 'id' field
 
     // TODO: Add custom equals and hashCode methods. Consider two Job objects "equal" when their id fields match.

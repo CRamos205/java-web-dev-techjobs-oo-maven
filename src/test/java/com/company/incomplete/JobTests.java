@@ -54,16 +54,25 @@ public class JobTests {
     // you can follow TDD if you want, or you can write the implementation first and then get the tests to pass, either is a fine approach
     @Test
     public void testToStringContainsBlankLines() {
+    char firstChar = jobTests3.toString().charAt(0);
+    char lastChar = jobTests3.toString().charAt(jobTests3.toString().length()-1);
+    assertTrue(firstChar == lastChar);
+
 
     }
 
     @Test
     public void testToStringHasLabelsForEachField() {
-
+    String actual = jobTests3.toString();
+    String expected = String.format("\nID: %d\nName: %s\nEmployer: %s\nLocation: %s\nPosition Type: %s\nCore Competency: %s\n", jobTests3.getId(), jobTests3.getName(), jobTests3.getEmployer(), jobTests3.getLocation(),jobTests3.getPositionType().getValue(), jobTests3.getCoreCompetency());
+    assertEquals(expected, actual);
     }
+
 
     @Test
     public void testToStringDataNotAvailable() {
+
+
 
     }
 }
