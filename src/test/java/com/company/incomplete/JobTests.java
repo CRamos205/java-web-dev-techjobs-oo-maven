@@ -4,8 +4,7 @@ import com.company.*;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class JobTests {
     static Job jobTests1, jobTests2, jobTests3, jobTests4;
@@ -28,16 +27,28 @@ public class JobTests {
 
     @Test
     public void testJobConstructorSetsAllFields() {
-    assertEquals(true, jobTests3 instanceof Job);
+    assertEquals(true, jobTests3.getEmployer() instanceof Employer);
+    assertEquals(true, jobTests3.getLocation() instanceof Location);
+    assertEquals(true, jobTests3.getPositionType() instanceof PositionType);
+    assertEquals(true, jobTests3.getCoreCompetency() instanceof CoreCompetency);
+    assertEquals(true, jobTests3.getName() == "Product tester");
+    assertEquals(true, jobTests3.getEmployer().getValue() == "ACME");
+    assertEquals(true, jobTests3.getPositionType().getValue() == "Quality control");
+    assertEquals(true, jobTests3.getLocation().getValue() == "Desert");
+    assertEquals(true, jobTests3.getCoreCompetency().getValue() == "Persistence");
+
+
 
 
     }
 
     @Test
     public void testJobsForEquality() {
-    assertNotEquals(jobTests3, jobTests4);
+    assertFalse(jobTests3.equals(jobTests4));
 
     }
+
+
 
     // I found the instructions around the three toString() tests a little confusing, so I created three tests following the three bullet points:
     // you can follow TDD if you want, or you can write the implementation first and then get the tests to pass, either is a fine approach
