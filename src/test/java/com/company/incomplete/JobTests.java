@@ -8,13 +8,14 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class JobTests {
     static Job jobTests1, jobTests2, jobTests3, jobTests4;
+    private static String value;
 
-@BeforeAll
+    @BeforeAll
     static void createJob() {
         jobTests1 = new Job();
         jobTests2 = new Job();
         jobTests3 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
-        jobTests4 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        jobTests4 = new Job("Product tester", new Employer(""), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
 
     }
     // you can rename the tests, or delete them and rewrite them from scratch, but I went ahead and provided you the names of tests I created -- I followed the writeup pretty honestly
@@ -64,15 +65,15 @@ public class JobTests {
     @Test
     public void testToStringHasLabelsForEachField() {
     String actual = jobTests3.toString();
-    String expected = String.format("\nID: %d\nName: %s\nEmployer: %s\nLocation: %s\nPosition Type: %s\nCore Competency: %s\n", jobTests3.getId(), jobTests3.getName(), jobTests3.getEmployer(), jobTests3.getLocation(),jobTests3.getPositionType().getValue(), jobTests3.getCoreCompetency());
+    String expected = String.format("\nID: %d\nName: %s\nEmployer: %s\nLocation: %s\nPosition Type: %s\nCore Competency: %s\n", jobTests3.getId(), jobTests3.getName(), jobTests3.getEmployer().getValue(), jobTests3.getLocation().getValue(),jobTests3.getPositionType().getValue(), jobTests3.getCoreCompetency().getValue());
     assertEquals(expected, actual);
     }
 
 
     @Test
     public void testToStringDataNotAvailable() {
-
-
-
+        String actual = jobTests4.toString();
+        String expected = String.format("\nID: %d\nName: %s\nEmployer: Data Not Available\nLocation: %s\nPosition Type: %s\nCore Competency: %s\n", jobTests4.getId(), jobTests4.getName(), jobTests4.getLocation().getValue(), jobTests4.getPositionType().getValue(), jobTests4.getCoreCompetency().getValue());
+        assertEquals(expected, actual);
     }
 }

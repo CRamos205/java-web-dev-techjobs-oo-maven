@@ -64,28 +64,28 @@ public class Job {
 
     @Override
     public String toString() {
-        if (this.name == ""){
-            System.out.println("Data Not Available");
+        if (this.name.equals("")) {
+            name = "Data Not Available";
         }
-        if (this.employer.equals("")) {
-            System.out.println("Data Not Available");
+        if (this.employer.getValue().equals("")) {
+            employer.setValue("Data Not Available");
         }
         if (this.location.equals("")) {
-            System.out.println("Data Not Available");
+            location.setValue("Data Not Available");
         }
         if (this.getPositionType().getValue().equals("")) {
-            System.out.println("Data Not Available");
+            getPositionType().setValue("Data Not Available");
         }
         if (this.coreCompetency.equals("")) {
-            System.out.println("Data Not Available");
+            this.coreCompetency.setValue("Data Not Available");
         }
         return "\n"+
                 "ID: " + id + "\n"+
                 "Name: " + name + "\n" +
-                "Employer: " + employer + "\n" +
-                "Location: " + location + "\n" +
+                "Employer: " + this.getEmployer().getValue() + "\n" +
+                "Location: " + this.getLocation().getValue() + "\n" +
                 "Position Type: " + this.getPositionType().getValue() + "\n" +
-                "Core Competency: " + coreCompetency + "\n";
+                "Core Competency: " + this.getCoreCompetency().getValue() + "\n";
     }
     // TODO: add two constructors - one to initialize a unique ID and a second to initialize the other five fields. The second constructor should also call the first in order to initialize the 'id' field
 
